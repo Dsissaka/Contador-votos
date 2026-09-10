@@ -1,0 +1,27 @@
+{
+  "canvas_size": [
+    1000,
+    700
+  ],
+  "fill_threshold": 0.35,
+  "rows": [
+    {
+      "label": "filme1",
+      "x_start": 131,
+      "x_end": 940,
+      "y_start": 103,
+      "y_end": 167,
+      "n_boxes": 10,
+      "margin_ratio": 0.18
+    },
+    {
+      "label": "filme2",
+      "x_start": 134,
+      "x_end": 962,
+      "y_start": 236,
+      "y_end": 323,
+      "n_boxes": 10,
+      "margin_ratio": 0.18
+    }
+  ]
+}
