@@ -1,4 +1,4 @@
-# Leitor automático de cédulas — Festival de Cinema de Bonito/MS
+# Leitor automático de cédulas
 
 Lê as cédulas de votação (2 filmes por cédula, nota de 1 a 10 marcada em
 quadradinhos) via webcam ou fotos, e extrai os votos automaticamente.
