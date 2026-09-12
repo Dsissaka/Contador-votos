@@ -41,7 +41,7 @@ def main():
         sys.exit(f"Nenhuma imagem encontrada em {input_dir}")
 
     rows_out = []
-    labels = [r["label"] for r in config["rows"]]
+    labels = [g["label"] for g in config["groups"]]
 
     for path in images:
         image = cv2.imread(str(path))
@@ -51,13 +51,14 @@ def main():
 
         result = read_ballot(image, config)
 
-        row = {"arquivo": path.name, "status": result["status"]}
+        row = {"arquivo": path.name, "status": result["status"],
+               "metodo_deteccao": result["metodo_deteccao"]}
         for label in labels:
             row[label] = result["notas"].get(label)
         rows_out.append(row)
 
         # salva imagem de depuração só pra revisar (ajuda MUITO a calibrar
-        # o fill_threshold e a conferir os casos "revisar")
+        # o min_ink_ratio/margin_factor e a conferir os casos "revisar")
         debug_path = output_dir / f"debug_{path.stem}.jpg"
         cv2.imwrite(str(debug_path), result["debug_image"])
 
@@ -66,7 +67,7 @@ def main():
 
     csv_path = output_dir / "resultados.csv"
     with open(csv_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["arquivo", "status"] + labels)
+        writer = csv.DictWriter(f, fieldnames=["arquivo", "status", "metodo_deteccao"] + labels)
         writer.writeheader()
         writer.writerows(rows_out)
 

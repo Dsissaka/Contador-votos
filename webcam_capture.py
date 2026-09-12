@@ -38,7 +38,7 @@ def append_result(labels, notas):
 def main():
     cam_index = int(sys.argv[1]) if len(sys.argv) > 1 else 0
     config = load_config("grid_config.json")
-    labels = [r["label"] for r in config["rows"]]
+    labels = [g["label"] for g in config["groups"]]
 
     cap = cv2.VideoCapture(cam_index)
     if not cap.isOpened():
